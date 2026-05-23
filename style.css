@@ -1,0 +1,179 @@
+body {
+    background: linear-gradient(to bottom right, black, purple, blue);
+}
+
+#navPoga {
+    font-size: large;
+    z-index: 700;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+}
+
+#navBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 7%;
+    left: 0;
+    width: 16%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 129;
+}
+
+#navBar a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 10px 0;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    display: block;
+    width: 82%;
+    transition: all 0.3s ease;
+}
+
+#navBar a:hover {
+    background-color: purple;
+    border-radius: 4px;
+    transform: scale(1.05) translateX(5px);
+    box-shadow: 0 0 15px rgb(128, 0, 128, 0.6);
+}
+
+#navBar.open {
+    transform: translateX(0);
+}
+
+.fonsBar {
+    background-color: rgba(25, 3, 43, 0.5);
+    position: fixed;
+    top: 7%;
+    left: 0;
+    width: 16%;
+    height: 100vh;
+    z-index: -128;
+}
+
+.navigacija {
+    background: linear-gradient(to bottom right, black, purple, blue);
+    display: flex;
+    width: 16%;
+    height: 7%;
+    position: fixed;
+    gap: 35px;
+    top: 0;
+    left: 0;
+}
+
+#navVirsraksts {
+    font-size: 20px;
+    z-index: 500;
+}
+
+.saturs {
+    margin-top: 120px;       
+    margin-left: 18%;       
+    margin-right: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#galvenaisVirsraksts {
+    color: white;
+    font-family: sans-serif;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+#galvenaisTeksts {
+    background-color: rgba(255, 255, 255, 0.15); 
+    padding: 25px;
+    border-radius: 8px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+#uzdevumuSaraksts {
+    background-color: rgba(0, 0, 0, 0.25);       
+    padding: 25px;
+    border-radius: 8px;
+    border-top: 4px solid purple;               
+    color: white;
+    font-family: sans-serif;
+}
+
+#uzdevumuSaraksts h2 {
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.quiz-li {
+    list-style-type: none;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.jautajums-teksts {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.ievades-rinda {
+    display: flex;
+    gap: 10px;
+}
+
+.atbildes-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 0.95rem;
+}
+
+.atbildes-input:focus {
+    outline: none;
+    border-color: purple;
+}
+
+.parbaudit-btn {
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.parbaudit-btn:hover {
+    background-color: rgb(128, 0, 128, 0.8);
+    transform: scale(1.05) translateX(5px);
+    box-shadow: 0 0 10px rgb(128, 0, 128, 0.6);
+}
+
+.feedback-teksts {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
