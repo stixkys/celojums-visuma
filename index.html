@@ -5,34 +5,21 @@
 	<link rel="stylesheet" href="style.css" />
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Ceļojums Visumā</title>
+	<title>Sākums</title>
 </head>
 
 <body>
-	<div class="navigacija">
-		<button id="navPoga">☰</button>
-		<h1 id="navVirsraksts"><b>Visums</b></h1>
+	<div id="sakums">
+		<video autoplay muted loop id="fonsVideo">
+			<source src="zvaigznes.mp4" type="video/mp4">
+			Jūsu pārlūkprogramma neatbalsta video atskaņošanu.
+		</video>
+		<div class="sakumaSaturs">
+			<h1><b>Ceļojums Visumā</b></h1>
+			<p>Izpēti Visuma noslēpumus un atklāj tā brīnumus!</p>
+			<a href="visums.html" id="saktPoga" style="text-decoration: none; display: inline-block;">Sākt ceļojumu</a>
+		</div>
 	</div>
-	<div>
-		<nav id="navBar">
-			<a href="#" class="nav-saite" data-tema="modeli">Pasaules uzbūves modeļi</a>
-			<a href="#" class="nav-saite" data-tema="planetas">Saules sistēmas planētas</a>
-			<a href="#" class="nav-saite" data-tema="mazie">Saules sistēmas mazie ķermeņi</a>
-			<a href="#" class="nav-saite" data-tema="zvaigznes">Zvaigznes un to evolūcija</a>
-			<a href="#" class="nav-saite" data-tema="galaktikas">Galaktikas</a>
-			<a href="#" class="nav-saite" data-tema="izpete">Visuma izpēte</a>
-		</nav>
-	</div>
-	<div class="fonsBar"></div>
-	<main class="saturs">
-		<h1 id="galvenaisVirsraksts"></h1>
-			<article id="galvenaisTeksts"></article>
-			<aside id="uzdevumuSaraksts">
-				<h2>Uzdevumi</h2>
-				<ul></ul>
-			</aside>
-	</main>
-	<script src="script.js"></script>
 </body>
 
 </html>
