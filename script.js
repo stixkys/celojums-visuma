@@ -38,7 +38,7 @@ const temasDati = {
   galaktikas: {
     virsraksts: "Galaktikas",
     attels: "https://somalv.s3.eu-central-1.amazonaws.com/assets/5abf901311ac37076c748a6bfd484478_6_5_andromedas_galaktika_202564594.jpg",
-    teksts: "Galaktika ir milzīga, gravitācijas spēka kopā noturēta sistēma, kas sastāv no miljardiem zvaigžņu, gāzu un putekļu mākoņiem, kā arī noslēpumainās tumšās matērijas. Mūsu Saules sistēma atrodas galaktikā, ko sauc par <b>Piena Ceļu</b>. Pēc to vizuālās formas un uzbūves galaktikas iedala trīs galvenajos tipos: <br>1. <b>Spirālveida galaktikas</b> (kā Piena Ceļš vai Andromedas galaktika) ar izteiktiem, rotējošiem zariem. <br>2. <b>Eliptiskās galaktikas</b>, kam ir gluda, olveida forma un kurās pārsvarā ir vecas zvaigznes. <br>3. <b>Neregulāras galaktikas</b>, kurām nav noteiktas simetriskas formas.",
+    teksts: "Galaktika ir milzīga, gravitācijas spēka kopā noturēta sistēma, kas sastāv no miljardiem zvaigžņu, gāzu un putekļu mākoņiem, kā arī noslēpumainās tumšās matērijas. Mūsu Saules sistēma atrodas galaktikā, ko sauc par <b>Piena Ceļu</b>. Pēc to vizuālās formas un uzbūves galaktikas iedala trīs galvenajos tipos: <br>1. <b>Spirālveida galaktikas</b> (kā Piena Ceļš vai Andromedas galaktika) ar izteiktiem, rotējošiem zariem. <br>2. <b>Eliptiskās galaktikas</b>, kam ir gluda, olveida forma un kurās pārsvarā ir vecas zvaigznes. <br>3. <b>Neregulāras galaktikas</b>, kurām nav noteiktas simetriskas formas. Skolēni mācās saskatīt šo struktūru hierarhiju Visumā.",
     uzdevumi: [
       { id: "gal1", jautajums: "Kādā galaktikā atrodas mūsu Zeme un Saules sistēma?", atbilde: ["piena ceļš", "piena cels", "piena ceļa galaktikā", "piena ceļa"] },
       { id: "gal2", jautajums: "Kādā struktūras tipā pēc formas iedalās mūsu Piena Ceļa galaktika?", atbilde: ["spirālveida", "spiralveida", "spirālveida galaktika"] }
@@ -70,18 +70,22 @@ attelsElement.style.borderRadius = "8px";
 attelsElement.style.marginBottom = "20px";
 attelsElement.style.boxShadow = "0 4px 15px rgba(0,0,0,0.3)";
 
-virsrakstsElement.parentNode.insertBefore(attelsElement, virsrakstsElement.nextSibling);
+if (virsrakstsElement && virsrakstsElement.parentNode) {
+    virsrakstsElement.parentNode.insertBefore(attelsElement, virsrakstsElement.nextSibling);
+}
 
-navPoga.addEventListener("click", function() {
-    navBar.classList.toggle("open");
-});
+if (navPoga && navBar) {
+    navPoga.addEventListener("click", function() {
+        navBar.classList.toggle("open");
+    });
+}
 
 function mainitSaturu(temaKey) {
     const dati = temasDati[temaKey];
     if (!dati) return;
 
-    virsrakstsElement.textContent = dati.virsraksts;
-    tekstsElement.innerHTML = `<p>${dati.teksts}</p>`;
+    if (virsrakstsElement) virsrakstsElement.textContent = dati.virsraksts;
+    if (tekstsElement) tekstsElement.innerHTML = `<p>${dati.teksts}</p>`;
     
     if (dati.attels) {
         attelsElement.src = dati.attels;
@@ -91,33 +95,45 @@ function mainitSaturu(temaKey) {
     }
 
     let uzdevumuHTML = "";
-    dati.uzdevumi.forEach(uzd => {
-        uzdevumuHTML += `
-            <li class="quiz-li" id="kaste-${uzd.id}">
-                <p class="jautajums-teksts">${uzd.jautajums}</p>
-                <div class="ievades-rinda">
-                    <input type="text" id="input-${uzd.id}" placeholder="Ieraksti atbildi..." class="atbildes-input">
-                    <button id="btn-${uzd.id}" class="parbaudit-btn">Pārbaudīt</button>
-                </div>
-                <p id="feedback-${uzd.id}" class="feedback-teksts"></p>
-            </li>
-        `;
-    });
-    
-    uzdevumuUl.innerHTML = uzdevumuHTML;
-
-    dati.uzdevumi.forEach(uzd => {
-        document.getElementById(`btn-${uzd.id}`).addEventListener("click", function() {
-            parbauditAtbildi(uzd.id, uzd.atbilde);
+    if (dati.uzdevumi) {
+        dati.uzdevumi.forEach(uzd => {
+            uzdevumuHTML += `
+                <li class="quiz-li" id="kaste-${uzd.id}">
+                    <p class="jautajums-teksts">${uzd.jautajums}</p>
+                    <div class="ievades-rinda">
+                        <input type="text" id="input-${uzd.id}" placeholder="Ieraksti atbildi..." class="atbildes-input">
+                        <button id="btn-${uzd.id}" class="parbaudit-btn">Pārbaudīt</button>
+                    </div>
+                    <p id="feedback-${uzd.id}" class="feedback-teksts"></p>
+                </li>
+            `;
         });
-    });
+    }
+    
+    if (uzdevumuUl) {
+        uzdevumuUl.innerHTML = uzdevumuHTML;
+    }
+
+    if (dati.uzdevumi) {
+        dati.uzdevumi.forEach(uzd => {
+            const btnNode = document.getElementById(`btn-${uzd.id}`);
+            if (btnNode) {
+                btnNode.addEventListener("click", function() {
+                    parbauditAtbildi(uzd.id, uzd.atbilde);
+                });
+            }
+        });
+    }
 }
 
 function parbauditAtbildi(inputID, pareizoAtbilžuSaraksts) {
-    const userInput = document.getElementById(`input-${inputID}`).value.trim().toLowerCase();
+    const inputEl = document.getElementById(`input-${inputID}`);
     const feedback = document.getElementById(`feedback-${inputID}`);
     const kaste = document.getElementById(`kaste-${inputID}`);
 
+    if (!inputEl || !feedback || !kaste) return;
+
+    const userInput = inputEl.value.trim().toLowerCase();
     const irPareizi = pareizoAtbilžuSaraksts.some(atb => atb.toLowerCase() === userInput);
 
     if (irPareizi) {
@@ -138,8 +154,12 @@ document.addEventListener("click", function(event) {
         event.preventDefault();
         const izveletaTema = event.target.getAttribute("data-tema");
         mainitSaturu(izveletaTema);
-        navBar.classList.remove("open");
+        if (navBar) {
+            navBar.classList.remove("open");
+        }
     }
 });
 
-mainitSaturu("modeli");
+document.addEventListener("DOMContentLoaded", function() {
+    mainitSaturu("modeli");
+});
