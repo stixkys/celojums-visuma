@@ -1,5 +1,91 @@
 body {
     background: linear-gradient(to bottom right, black, purple, blue);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#sakums {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#fonsVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.sakumaSaturs {
+    text-align: center;
+    color: white;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 40px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 85%;
+    box-sizing: border-box;
+}
+
+.sakumaSaturs h1 {
+    font-size: 3.5rem;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.sakumaSaturs p {
+    font-size: 1.2rem;
+    margin: 0 0 30px 0;
+}
+
+#saktPoga {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#saktPoga:hover {
+    background-color: rgb(150, 0, 150);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgb(128, 0, 128, 0.6);
+}
+
+.navigacija {
+    background: linear-gradient(to bottom right, black, purple, blue);
+    display: flex;
+    align-items: center;
+    width: 16%;
+    height: 7%;
+    position: fixed;
+    gap: 35px;
+    top: 0;
+    left: 0;
+    padding-left: 15px;
+    box-sizing: border-box;
 }
 
 #navPoga {
@@ -9,6 +95,28 @@ body {
     height: 40px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 6px;
+    cursor: pointer;
+}
+
+#navVirsraksts {
+    font-size: 20px;
+    z-index: 500;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+#navVirsrakstsLink {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+#navVirsrakstsLink:hover #navVirsraksts {
+    color: rgba(235, 81, 255, 0.8);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
 }
 
 #navBar {
@@ -27,6 +135,10 @@ body {
     z-index: 129;
 }
 
+#navBar.open {
+    transform: translateX(0);
+}
+
 #navBar a {
     color: white;
     text-decoration: none;
@@ -38,6 +150,7 @@ body {
     display: block;
     width: 82%;
     transition: all 0.3s ease;
+    font-family: sans-serif;
 }
 
 #navBar a:hover {
@@ -45,10 +158,6 @@ body {
     border-radius: 4px;
     transform: scale(1.05) translateX(5px);
     box-shadow: 0 0 15px rgb(128, 0, 128, 0.6);
-}
-
-#navBar.open {
-    transform: translateX(0);
 }
 
 .fonsBar {
@@ -59,22 +168,6 @@ body {
     width: 16%;
     height: 100vh;
     z-index: -128;
-}
-
-.navigacija {
-    background: linear-gradient(to bottom right, black, purple, blue);
-    display: flex;
-    width: 16%;
-    height: 7%;
-    position: fixed;
-    gap: 35px;
-    top: 0;
-    left: 0;
-}
-
-#navVirsraksts {
-    font-size: 20px;
-    z-index: 500;
 }
 
 .saturs {
@@ -176,4 +269,66 @@ body {
     margin-top: 8px;
     font-size: 0.95rem;
     font-weight: bold;
+}
+
+footer {
+    margin-left: 18%;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .navigacija {
+        width: 100%;
+        height: 60px;
+        justify-content: flex-start;
+        padding-left: 20px;
+        z-index: 1000;
+    }
+    #navBar {
+        top: 60px;
+        width: 100%;
+        height: calc(100vh - 60px);
+    }
+    #navBar a {
+        width: 85%;
+        font-size: 20px;
+        padding: 15px;
+        text-align: center;
+    }
+    .fonsBar {
+        display: none;
+    }
+    .saturs {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 90px;
+    }
+    footer {
+        margin-left: 0;
+        padding: 20px;
+    }
+    .sakumaSaturs h1 {
+        font-size: 2.2rem;
+    }
+    .sakumaSaturs p {
+        font-size: 1rem;
+    }
+    #galvenaisVirsraksts {
+        font-size: 1.8rem;
+    }
+    #galvenaisTeksts {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    .ievades-rinda {
+        flex-direction: column;
+    }
+    .parbaudit-btn {
+        width: 100%;
+        padding: 12px;
+    }
 }
